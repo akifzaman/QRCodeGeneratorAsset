@@ -5,7 +5,7 @@ using UnityEngine;
 public class CreateContactInfoQRCodeMECard : CreateQRCode
 {
     public List<string> Tags = new List<string>{"N:", "ORG:", "TEL:", "URL:", "EMAIL:", "ADR:", "NOTE:"};
-   
+    
     void Start()
     {
         GenerateText();

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class CreateQRCode : MonoBehaviour  
 {   
@@ -18,13 +19,17 @@ public class CreateQRCode : MonoBehaviour
     public GameObject Form;
     public Button GenerateButton;
 
-    // For generating the text
+    public CanvasGroup ShareButtonCanvasGroup;
+    public CanvasGroup GenerateAgainButtonCanvas;
+
+    public Scene scene;
+    // For generating raw text
     public virtual string GenerateText()
     {
         return Lastresult;
     }
 
-    // For generate QRCode
+    // For generating QRCode
 	public static Color32[] Encode(string textForEncoding, int width, int height)  
 	{  
 		var writer = new BarcodeWriter  
@@ -52,10 +57,18 @@ public class CreateQRCode : MonoBehaviour
         }
         QRCodePlaceHolder.sprite = Sprite.Create(encoded, new Rect(0, 0, encoded.width, encoded.height), Vector2.zero);
     }
+
+    public void GenerateAgain()
+    {
+        scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
+    }
     public void StoreInput()
     {
-		Form.gameObject.SetActive(false);
+		//Form.gameObject.SetActive(false);
 		GenerateButton.gameObject.SetActive(false);
         QRCodePlaceHolder.gameObject.SetActive(true);
+        UIManager.Instance.FadeIn(ShareButtonCanvasGroup);
+        UIManager.Instance.FadeIn(GenerateAgainButtonCanvas);
     }
 }  

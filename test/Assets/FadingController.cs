@@ -6,7 +6,6 @@ using System;
 
 public class FadingController : MonoBehaviour
 {
-    //hello
     public CanvasGroup ButtonCanvas;
 
     private void Start()
