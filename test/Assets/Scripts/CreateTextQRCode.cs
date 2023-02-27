@@ -6,12 +6,10 @@ using UnityEngine;
 public class CreateTextQRCode : CreateQRCode
 {
     public TMP_InputField TextInputField;
-    void Start()
+    public void GenerateTextToConvert()
     {
         GenerateText();
-        GenerateQROutput();
     }
-
     public override string GenerateText()
     {
         Lastresult += TextInputField.text;

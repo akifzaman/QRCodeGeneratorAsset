@@ -5,13 +5,11 @@ using UnityEngine;
 public class CreateContactInfoQRCodeMECard : CreateQRCode
 {
     public List<string> Tags = new List<string>{"N:", "ORG:", "TEL:", "URL:", "EMAIL:", "ADR:", "NOTE:"};
-    
-    void Start()
+
+    public void GenerateTextToConvert()
     {
         GenerateText();
-        GenerateQROutput();
     }
-
     public override string GenerateText()
     {
         Lastresult += "MECARD:";

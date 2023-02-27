@@ -7,12 +7,10 @@ public class CreateWIFIQRCode : CreateQRCode
 {
     public List<string> Tags = new List<string> { "S:", "T:", "P:", "H:"};
 
-    void Start()
+    public void GenerateTextToConvert()
     {
         GenerateText();
-        GenerateQROutput();
     }
-
     public override string GenerateText()
     {
         Lastresult += "WIFI:";

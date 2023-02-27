@@ -5,12 +5,10 @@ using UnityEngine.UI;
 
 public class CreateGeoLocationQRCode : CreateQRCode
 {
-    void Start()
+    public void GenerateTextToConvert()
     {
         GenerateText();
-        GenerateQROutput();
     }
-
     public override string GenerateText()
     {
         Lastresult += ("geo:" + inputFields[0].text + "," + inputFields[1].text + "?q=" + inputFields[2].text);

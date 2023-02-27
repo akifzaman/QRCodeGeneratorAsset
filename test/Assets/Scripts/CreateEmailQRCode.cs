@@ -6,12 +6,10 @@ using UnityEngine;
 public class CreateEmailQRCode : CreateQRCode
 {
     public TMP_InputField EmailAddressInputField;
-    void Start()
+    public void GenerateTextToConvert()
     {
         GenerateText();
-        GenerateQROutput();
     }
-
     public override string GenerateText()
     {
         if (EmailAddressInputField.text != null) Lastresult += ("mailto:" + EmailAddressInputField.text);

@@ -45,6 +45,8 @@ public class UIManager : MonoBehaviour
     {
         GenerateButtonCanvas.transform.localScale = Vector3.zero;
         GenerateButtonCanvas.alpha = 0;
+        ShareButtonCanvas.transform.localScale = Vector3.zero;
+        ShareButtonCanvas.alpha = 0;
         ShowForm();
         StartCoroutine(ShowGenerateButton());
     }

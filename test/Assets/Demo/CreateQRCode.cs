@@ -19,6 +19,7 @@ public class CreateQRCode : MonoBehaviour
     public GameObject Form;
     public Button GenerateButton;
 
+    public CanvasGroup QRCodeImageCanvas;
     public CanvasGroup ShareButtonCanvasGroup;
     public CanvasGroup GenerateAgainButtonCanvas;
 
@@ -65,9 +66,8 @@ public class CreateQRCode : MonoBehaviour
     }
     public void StoreInput()
     {
-		//Form.gameObject.SetActive(false);
-		GenerateButton.gameObject.SetActive(false);
-        QRCodePlaceHolder.gameObject.SetActive(true);
+        GenerateButton.gameObject.SetActive(false);
+        UIManager.Instance.FadeIn(QRCodeImageCanvas);
         UIManager.Instance.FadeIn(ShareButtonCanvasGroup);
         UIManager.Instance.FadeIn(GenerateAgainButtonCanvas);
     }

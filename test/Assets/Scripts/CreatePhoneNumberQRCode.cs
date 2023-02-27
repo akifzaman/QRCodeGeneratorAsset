@@ -6,12 +6,10 @@ using UnityEngine;
 public class CreatePhoneNumberQRCode : CreateQRCode
 {
     public TMP_InputField PhoneNumberInputField;
-    void Start()
+    public void GenerateTextToConvert()
     {
         GenerateText();
-        GenerateQROutput();
     }
-
     public override string GenerateText()
     {
         Lastresult += ("tel:" + PhoneNumberInputField.text);

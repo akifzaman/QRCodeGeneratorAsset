@@ -6,13 +6,10 @@ using UnityEngine;
 public class CreateContactInfoQRCodeVCard : CreateQRCode
 {
     public List<string> Tags = new List<string> { "N:", "ORG:", "TEL:", "URL:", "EMAIL:", "ADR:", "NOTE:" };
-    
-    void Start()
+    public void GenerateTextToConvert()
     {
         GenerateText();
-        GenerateQROutput();
     }
-
     public override string GenerateText()
     {
         Lastresult += "BEGIN:VCARD";

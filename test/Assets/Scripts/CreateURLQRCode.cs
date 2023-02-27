@@ -6,12 +6,10 @@ using UnityEngine;
 public class CreateURLQRCode : CreateQRCode
 {
     public TMP_InputField URLInputField;
-    void Start()
+    public void GenerateTextToConvert()
     {
         GenerateText();
-        GenerateQROutput();
     }
-
     public override string GenerateText()
     {
         Lastresult += ("http://" + URLInputField.text);
