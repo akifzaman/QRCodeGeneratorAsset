@@ -9,7 +9,7 @@ public class CreateWIFIQRCode : CreateQRCode
 
     public void GenerateTextToConvert()
     {
-        GenerateText();
+        if (UIManager.Instance.isFormValid) GenerateText();
     }
     public override string GenerateText()
     {

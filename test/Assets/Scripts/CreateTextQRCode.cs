@@ -8,7 +8,7 @@ public class CreateTextQRCode : CreateQRCode
     public TMP_InputField TextInputField;
     public void GenerateTextToConvert()
     {
-        GenerateText();
+        if (UIManager.Instance.isFormValid) GenerateText();
     }
     public override string GenerateText()
     {

@@ -48,15 +48,18 @@ public class CreateQRCode : MonoBehaviour
 	// For generating the QRCode Image
     public void GenerateQROutput()
     {
-        encoded = new Texture2D(256, 256);
-        var textForEncoding = Lastresult;
-        if (textForEncoding != null)
+        if (UIManager.Instance.isFormValid)
         {
-            var color32 = Encode(textForEncoding, encoded.width, encoded.height);
-            encoded.SetPixels32(color32);
-            encoded.Apply();
+            encoded = new Texture2D(256, 256);
+            var textForEncoding = Lastresult;
+            if (textForEncoding != null)
+            {
+                var color32 = Encode(textForEncoding, encoded.width, encoded.height);
+                encoded.SetPixels32(color32);
+                encoded.Apply();
+            }
+            QRCodePlaceHolder.sprite = Sprite.Create(encoded, new Rect(0, 0, encoded.width, encoded.height), Vector2.zero);
         }
-        QRCodePlaceHolder.sprite = Sprite.Create(encoded, new Rect(0, 0, encoded.width, encoded.height), Vector2.zero);
     }
 
     public void GenerateAgain()
@@ -66,9 +69,12 @@ public class CreateQRCode : MonoBehaviour
     }
     public void StoreInput()
     {
-        GenerateButton.gameObject.SetActive(false);
-        UIManager.Instance.FadeIn(QRCodeImageCanvas);
-        UIManager.Instance.FadeIn(ShareButtonCanvasGroup);
-        UIManager.Instance.FadeIn(GenerateAgainButtonCanvas);
+        if (UIManager.Instance.isFormValid)
+        {
+            GenerateButton.gameObject.SetActive(false);
+            UIManager.Instance.FadeIn(QRCodeImageCanvas);
+            UIManager.Instance.FadeIn(ShareButtonCanvasGroup);
+            UIManager.Instance.FadeIn(GenerateAgainButtonCanvas);
+        }
     }
 }  

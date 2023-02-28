@@ -7,7 +7,7 @@ public class CreateGeoLocationQRCode : CreateQRCode
 {
     public void GenerateTextToConvert()
     {
-        GenerateText();
+        if (UIManager.Instance.isFormValid) GenerateText();
     }
     public override string GenerateText()
     {

@@ -9,7 +9,7 @@ public class CreateSMSQRCode : CreateQRCode
     public TMP_InputField MessageInputField;
     public void GenerateTextToConvert()
     {
-        GenerateText();
+        if (UIManager.Instance.isFormValid) GenerateText();
     }
     public override string GenerateText()
     {

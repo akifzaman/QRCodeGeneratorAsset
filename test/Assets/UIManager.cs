@@ -30,6 +30,10 @@ public class UIManager : MonoBehaviour
     public CanvasGroup GenerateAgainButtonCanvas;
     public CanvasGroup ShareButtonCanvas;
 
+    public bool isFormValid = false;
+
+    public GameObject Form;
+    
     public void Awake()
     {
         if (Instance != null)
@@ -51,6 +55,14 @@ public class UIManager : MonoBehaviour
         StartCoroutine(ShowGenerateButton());
     }
 
+    public void OnGenerateButtonClicked()
+    {
+        if (isFormValid)
+        {
+            Form.gameObject.SetActive(false);
+            GenerateButton.gameObject.SetActive(false);
+        }
+    }
     IEnumerator ShowButtons()
     {
         yield return new WaitForSeconds(0.5f);
@@ -92,9 +104,12 @@ public class UIManager : MonoBehaviour
     }
     public void RemoveForm()
     {
-        foreach (var inputFieldTransform in inputFieldTransforms)
+        if (UIManager.Instance.isFormValid)
         {
-            MoveInputFieldX(inputFieldTransform, 2 * finalXPosition);
+            foreach (var inputFieldTransform in inputFieldTransforms)
+            {
+                MoveInputFieldX(inputFieldTransform, 2 * finalXPosition);
+            }
         }
     }
     private void MoveInputFieldX(RectTransform inputFieldTransform, float xPosition)

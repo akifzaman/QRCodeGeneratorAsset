@@ -8,10 +8,11 @@ public class CreateContactInfoQRCodeMECard : CreateQRCode
 
     public void GenerateTextToConvert()
     {
-        GenerateText();
+        if(UIManager.Instance.isFormValid) GenerateText();
     }
     public override string GenerateText()
     {
+        
         Lastresult += "MECARD:";
         for (int i = 0; i < inputFields.Count; i++)
         {

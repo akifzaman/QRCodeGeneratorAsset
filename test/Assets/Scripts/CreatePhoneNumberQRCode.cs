@@ -8,7 +8,7 @@ public class CreatePhoneNumberQRCode : CreateQRCode
     public TMP_InputField PhoneNumberInputField;
     public void GenerateTextToConvert()
     {
-        GenerateText();
+        if (UIManager.Instance.isFormValid) GenerateText();
     }
     public override string GenerateText()
     {

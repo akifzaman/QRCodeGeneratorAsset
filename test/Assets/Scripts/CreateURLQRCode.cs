@@ -8,7 +8,7 @@ public class CreateURLQRCode : CreateQRCode
     public TMP_InputField URLInputField;
     public void GenerateTextToConvert()
     {
-        GenerateText();
+        if (UIManager.Instance.isFormValid) GenerateText();
     }
     public override string GenerateText()
     {

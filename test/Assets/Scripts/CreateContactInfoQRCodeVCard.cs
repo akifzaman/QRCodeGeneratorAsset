@@ -8,10 +8,11 @@ public class CreateContactInfoQRCodeVCard : CreateQRCode
     public List<string> Tags = new List<string> { "N:", "ORG:", "TEL:", "URL:", "EMAIL:", "ADR:", "NOTE:" };
     public void GenerateTextToConvert()
     {
-        GenerateText();
+        if(UIManager.Instance.isFormValid) GenerateText();
     }
     public override string GenerateText()
     {
+       
         Lastresult += "BEGIN:VCARD";
         Lastresult += (Environment.NewLine + "VERSION:3.0");
         for (int i = 0; i < inputFields.Count; i++)

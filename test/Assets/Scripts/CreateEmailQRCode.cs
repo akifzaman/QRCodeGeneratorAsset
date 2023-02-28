@@ -8,7 +8,7 @@ public class CreateEmailQRCode : CreateQRCode
     public TMP_InputField EmailAddressInputField;
     public void GenerateTextToConvert()
     {
-        GenerateText();
+        if (UIManager.Instance.isFormValid) GenerateText();
     }
     public override string GenerateText()
     {
