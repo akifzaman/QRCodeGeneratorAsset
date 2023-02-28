@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using Unity.VisualScripting;
 using TMPro;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -29,11 +30,12 @@ public class UIManager : MonoBehaviour
     public CanvasGroup GenerateButtonCanvas;
     public CanvasGroup GenerateAgainButtonCanvas;
     public CanvasGroup ShareButtonCanvas;
+    public CanvasGroup BackButtonCanvas;
 
     public bool isFormValid = false;
 
     public GameObject Form;
-    
+
     public void Awake()
     {
         if (Instance != null)
@@ -62,6 +64,14 @@ public class UIManager : MonoBehaviour
             Form.gameObject.SetActive(false);
             GenerateButton.gameObject.SetActive(false);
         }
+    }
+    public void OnBackButtonClicked()
+    {
+        Form.gameObject.SetActive(true);
+        GenerateButton.gameObject.SetActive(true);
+        ShareButtonCanvas.alpha = 0;
+        GenerateAgainButtonCanvas.alpha = 0;
+        BackButtonCanvas.alpha = 0;
     }
     IEnumerator ShowButtons()
     {

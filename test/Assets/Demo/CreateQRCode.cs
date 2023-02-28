@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 
 public class CreateQRCode : MonoBehaviour  
 {   
-	public Texture2D encoded;  
+	public static Texture2D encoded;  
 	public string Lastresult;
     public Image QRCodePlaceHolder;
 
@@ -22,8 +22,10 @@ public class CreateQRCode : MonoBehaviour
     public CanvasGroup QRCodeImageCanvas;
     public CanvasGroup ShareButtonCanvasGroup;
     public CanvasGroup GenerateAgainButtonCanvas;
+    public CanvasGroup BackButtonCanvas;
 
     public Scene scene;
+
     // For generating raw text
     public virtual string GenerateText()
     {
@@ -75,6 +77,13 @@ public class CreateQRCode : MonoBehaviour
             UIManager.Instance.FadeIn(QRCodeImageCanvas);
             UIManager.Instance.FadeIn(ShareButtonCanvasGroup);
             UIManager.Instance.FadeIn(GenerateAgainButtonCanvas);
+            UIManager.Instance.FadeIn(BackButtonCanvas);
         }
+    }
+
+    public void EnableEditFunction()
+    {
+        Lastresult = "";
+        QRCodeImageCanvas.alpha = 0;
     }
 }  

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GeoLocationInputFieldValidations : MonoBehaviour
@@ -21,10 +22,7 @@ public class GeoLocationInputFieldValidations : MonoBehaviour
     }
     public bool Validate(string input)
     {
-        if (input != null)
-        {
-            return true;
-        }
+        if (!string.IsNullOrEmpty(input)) return true;
         return false;
     }
 }
