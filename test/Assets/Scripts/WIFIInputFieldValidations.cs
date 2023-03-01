@@ -10,32 +10,29 @@ public class WIFIInputFieldValidations : MonoBehaviour
 
     [SerializeField] private bool isFormInputFieldOkay = true;
     // Regex pattern for validating
-    private string ssidPattern = @"^[a-zA-Z0-9_-]{1,32}$";
-    private string passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$";
+    //private string ssidPattern = @"^[a-zA-Z0-9_-]{1,32}$";
+    private string ssidPattern = @"^[a-zA-Z0-9_$@-]{1,32}$";
+    private string networkPattern = @"^(WPA|WEP|No Encryption)$";
+    private string passwordPattern = @"^[a-zA-Z0-9_$@-]{1,32}$";
+    private string hiddenPattern = @"^(true|false)$";
+    public List<string> RegularExpressions;
 
+    public void Start()
+    {
+        RegularExpressions.Add(ssidPattern);
+        RegularExpressions.Add(networkPattern);
+        RegularExpressions.Add(passwordPattern);
+        RegularExpressions.Add(hiddenPattern);
+    }
     public void ValidateInputFields()
     {
-        foreach (var input in InputFields)
+        for (int i = 0; i < InputFields.Count; i++)
         {
-            isFormInputFieldOkay = (isFormInputFieldOkay) && Validate(input.text);
+            string ss = Regex.Replace(InputFields[i].text, @"\s", "");
+            isFormInputFieldOkay = (isFormInputFieldOkay) && Regex.IsMatch(ss, RegularExpressions[i]);
+            if (!isFormInputFieldOkay) break;
         }
         if (isFormInputFieldOkay) UIManager.Instance.isFormValid = true;
         isFormInputFieldOkay = true;
-    }
-    public bool Validate(string input)
-    {
-        if (Regex.IsMatch(input, ssidPattern))
-        {
-            return true;
-        }
-        else if (Regex.IsMatch(input, passwordPattern))
-        {
-            return true;
-        }
-        else if (input != null)
-        {
-            return true;
-        }
-        return false;
     }
 }

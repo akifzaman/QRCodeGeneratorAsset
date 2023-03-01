@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Windows;
 
 public class ContactInfoInputFieldValidations : MonoBehaviour
 {
@@ -15,35 +16,23 @@ public class ContactInfoInputFieldValidations : MonoBehaviour
     private string phonePattern = @"^\+?[0-9]{0,3}[ -]?\(?[0-9]{3}\)?[ -]?[0-9]{3}[ -]?[0-9]{4}$";
     private string urlPattern = @"^(https?://)?(www\.)?([a-zA-Z0-9]+)\.([a-zA-Z]{2,})(\.[a-zA-Z]{2,})?$";
     private string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+    public List<string> RegularExpressions;
 
+    public void Start()
+    {
+        RegularExpressions.Add(namePattern);
+        RegularExpressions.Add(phonePattern);
+        RegularExpressions.Add(urlPattern);
+        RegularExpressions.Add(emailPattern);
+    }
     public void ValidateInputFields()
     {
-        foreach (var input in InputFields)
+        for (int i = 0; i < InputFields.Count; i++)
         {
-            isFormInputFieldOkay = (isFormInputFieldOkay) && Validate(input.text);
+            isFormInputFieldOkay = (isFormInputFieldOkay) && Regex.IsMatch(InputFields[i].text, RegularExpressions[i]);
+            if (!isFormInputFieldOkay) break;
         }
         if (isFormInputFieldOkay) UIManager.Instance.isFormValid = true;
         isFormInputFieldOkay = true;
-    }
-    public bool Validate(string input)
-    {
-
-        if (Regex.IsMatch(input, namePattern))
-        {
-            return true;
-        }
-        else if (Regex.IsMatch(input, phonePattern))
-        {
-            return true;
-        }
-        else if (Regex.IsMatch(input, urlPattern))
-        {
-            return true;
-        }
-        else if (Regex.IsMatch(input, emailPattern))
-        {
-            return true;
-        }
-        return false;
     }
 }

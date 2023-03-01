@@ -5,6 +5,7 @@ using ZXing.QrCode;
 using UnityEngine.UI;  
 using TMPro;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
@@ -26,6 +27,10 @@ public class CreateQRCode : MonoBehaviour
 
     public Scene scene;
 
+    //public void Start()
+    //{
+    //    Lastresult = " ";
+    //}
     // For generating raw text
     public virtual string GenerateText()
     {
@@ -69,6 +74,10 @@ public class CreateQRCode : MonoBehaviour
         scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
     }
+    public void GoToHome()
+    {
+        SceneManager.LoadScene("HomeScene");
+    }
     public void StoreInput()
     {
         if (UIManager.Instance.isFormValid)
@@ -85,5 +94,21 @@ public class CreateQRCode : MonoBehaviour
     {
         Lastresult = "";
         QRCodeImageCanvas.alpha = 0;
+    }
+
+    public void ShareImage()
+    {
+        Texture2D ss = encoded;
+
+        string filePath = Path.Combine(Application.temporaryCachePath, "shared img.png");
+        File.WriteAllBytes(filePath, ss.EncodeToPNG());
+
+        // To avoid memory leaks
+        //Destroy(ss);
+
+        new NativeShare().AddFile(filePath)
+            .SetSubject("Subject goes here").SetText("Hello world!").SetUrl("https://github.com/yasirkula/UnityNativeShare")
+            .SetCallback((result, shareTarget) => Debug.Log("Share result: " + result + ", selected app: " + shareTarget))
+            .Share();
     }
 }  

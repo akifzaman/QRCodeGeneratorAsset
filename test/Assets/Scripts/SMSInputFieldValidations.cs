@@ -12,23 +12,20 @@ public class SMSInputFieldValidations : MonoBehaviour
     [SerializeField] private bool isFormInputFieldOkay = true;
     // Regex pattern for validating email addresses
     private string phonePattern = @"^\+?[0-9]{0,3}[ -]?\(?[0-9]{3}\)?[ -]?[0-9]{3}[ -]?[0-9]{4}$";
+    public List<string> RegularExpressions;
 
+    public void Start()
+    {
+        RegularExpressions.Add(phonePattern);
+    }
     public void ValidateInputFields()
     {
-        foreach (var input in InputFields)
+        for (int i = 0; i < InputFields.Count; i++)
         {
-            isFormInputFieldOkay = (isFormInputFieldOkay) && Validate(input.text);
+            isFormInputFieldOkay = (isFormInputFieldOkay) && Regex.IsMatch(InputFields[i].text, RegularExpressions[i]);
+            if (!isFormInputFieldOkay) break;
         }
         if (isFormInputFieldOkay) UIManager.Instance.isFormValid = true;
         isFormInputFieldOkay = true;
-    }
-    public bool Validate(string input)
-    {
-
-        if (Regex.IsMatch(input, phonePattern))
-        {
-            return true;
-        }
-        return false;
     }
 }

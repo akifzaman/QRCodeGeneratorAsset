@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
     public float finalYPosition = -2000f;
 
     public Button GenerateButton;
+    public Button HomeButton;
     public Button GenerateAgainButton;
     public CanvasGroup GenerateButtonCanvas;
     public CanvasGroup GenerateAgainButtonCanvas;
@@ -62,6 +63,7 @@ public class UIManager : MonoBehaviour
         if (isFormValid)
         {
             Form.gameObject.SetActive(false);
+            HomeButton.gameObject.SetActive(false);
             GenerateButton.gameObject.SetActive(false);
         }
     }
@@ -69,6 +71,7 @@ public class UIManager : MonoBehaviour
     {
         Form.gameObject.SetActive(true);
         GenerateButton.gameObject.SetActive(true);
+        HomeButton.gameObject.SetActive(true);
         ShareButtonCanvas.alpha = 0;
         GenerateAgainButtonCanvas.alpha = 0;
         BackButtonCanvas.alpha = 0;

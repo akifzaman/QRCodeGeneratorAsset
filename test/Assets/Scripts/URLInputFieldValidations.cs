@@ -11,23 +11,22 @@ public class URLInputFieldValidations : MonoBehaviour
 
     [SerializeField] private bool isFormInputFieldOkay = true;
     // Regex pattern for validating email addresses
-    private string urlPattern = @"^(https?://)?(www\.)?([a-zA-Z0-9]+)\.([a-zA-Z]{2,})(\.[a-zA-Z]{2,})?$";
+    private string urlPattern = @"^((https?|ftp)://)?(www\.)?([a-zA-Z0-9_\-]+)(\.[a-zA-Z]{2,})(\.[a-zA-Z]{2,})?(/[\w\-\./\?\%\&=]*)?$";
 
+    public List<string> RegularExpressions;
+
+    public void Start()
+    {
+        RegularExpressions.Add(urlPattern);
+    }
     public void ValidateInputFields()
     {
-        foreach (var input in InputFields)
+        for (int i = 0; i < InputFields.Count; i++)
         {
-            isFormInputFieldOkay = (isFormInputFieldOkay) && Validate(input.text);
+            isFormInputFieldOkay = (isFormInputFieldOkay) && Regex.IsMatch(InputFields[i].text, RegularExpressions[i]);
+            if (!isFormInputFieldOkay) break;
         }
         if (isFormInputFieldOkay) UIManager.Instance.isFormValid = true;
         isFormInputFieldOkay = true;
-    }
-    public bool Validate(string input)
-    {
-        if (Regex.IsMatch(input, urlPattern))
-        {
-            return true;
-        }
-        return false;
     }
 }
