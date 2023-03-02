@@ -1,0 +1,74 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\BS835\\BS23\\L&D\\unity-zxing-master\\QRCodeGeneratorAsset\\test\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\launcher\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values\\values.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\BS835\\BS23\\L&D\\unity-zxing-master\\QRCodeGeneratorAsset\\test\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\launcher\\src\\main\\res\\values\\styles.xml",
+                    "from": {
+                        "startLines": "5,2,7",
+                        "startColumns": "0,0,0",
+                        "startOffsets": "190,53,288",
+                        "endLines": "6,4,10",
+                        "endColumns": "8,8,8",
+                        "endOffsets": "286,188,513"
+                    },
+                    "to": {
+                        "startLines": "10,20,23",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "466,1041,1179",
+                        "endLines": "11,22,26",
+                        "endColumns": "8,8,8",
+                        "endOffsets": "561,1174,1401"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\BS835\\BS23\\L&D\\unity-zxing-master\\QRCodeGeneratorAsset\\test\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\launcher\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "2,2",
+                        "startOffsets": "55,96",
+                        "endColumns": "39,65",
+                        "endOffsets": "92,159"
+                    },
+                    "to": {
+                        "startLines": "8,9",
+                        "startColumns": "4,4",
+                        "startOffsets": "356,398",
+                        "endColumns": "41,67",
+                        "endOffsets": "393,461"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\BS835\\.gradle\\caches\\transforms-2\\files-2.1\\e60496bac5c3ee25ceef3a5dd50abf40\\NativeShare\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "9",
+                        "endColumns": "12",
+                        "endOffsets": "525"
+                    },
+                    "to": {
+                        "startLines": "12",
+                        "startColumns": "4",
+                        "startOffsets": "566",
+                        "endLines": "19",
+                        "endColumns": "12",
+                        "endOffsets": "1036"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\BS835\\BS23\\L&D\\unity-zxing-master\\QRCodeGeneratorAsset\\test\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\unityLibrary\\build\\intermediates\\packaged_res\\release\\values\\values.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "55,101,158,214,263,309",
+                        "endColumns": "45,56,55,48,45,46",
+                        "endOffsets": "96,153,209,258,304,351"
+                    }
+                }
+            ]
+        }
+    ]
+}
